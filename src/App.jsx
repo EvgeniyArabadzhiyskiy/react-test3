@@ -5,7 +5,7 @@
 // import 'react-toastify/dist/ReactToastify.css';
 
 import Colorpicker from "./ColorPicker/ColorPicker";
-import colorPickerOptions from './ColorPicker/colorPickerOptions.json'
+import colorPickerOptions from "./ColorPicker/colorPickerOptions.json";
 
 // import Friends from "./components/Friends/Friends";
 import Counter from "./components/Counter/Counter";
@@ -25,10 +25,11 @@ import { Products } from "./pages/Products";
 import { NotFound } from "./pages/NotFound";
 import { Container, Header, Logo, Link } from "./App.styled";
 import { ProductDetails } from "./pages/ProdactDetails";
+
 import Statistics from "./pages/Statistics";
+import PagePokemonInfo from "./pages/PagePokemonInfo";
 
 const App = () => {
-
   return (
     <Container>
       <Header>
@@ -47,25 +48,25 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
 
-       
-        <Route path="/about" element={<About />}  >
-            <Route path="color-picker" element={<Colorpicker options={colorPickerOptions}/>} />
-            <Route path="counter" element={<Counter />} />
+        <Route path="/about" element={<About />}>
+          <Route path="color-picker" element={<Colorpicker options={colorPickerOptions} />} />
+          <Route path="counter" element={<Counter />} />
         </Route>
+        <Route path="/about/pokemons" element={<PagePokemonInfo />} />
 
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/products/stat" element={<Statistics />} />
-        <Route path="/products/team" element={<Counter />} />
-        
+        <Route path="/products/stats/:stat" element={<Statistics />} />
+        <Route path="/products/counter/:counter" element={<Counter />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-     
     </Container>
   );
 };
 export default App;
+
+
 
 // const App = () => {
 //   const [pokemonName, setPokemonName] = useState("")
