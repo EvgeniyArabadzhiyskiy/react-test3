@@ -19,27 +19,28 @@ function countReducer(state, action) {
   }
 }
 
-// function useLocalStorage(key, initialValue ) {
-//   const [state, setState] = useState(() =>  JSON.parse(window.localStorage.getItem(key))) ?? initialValue
 
-//   useEffect(() => {
-//     window.localStorage.setItem(key, JSON.stringify(state))
-//   },[state, key])
-
-//   return [state, setState]
-
-// }
 
 function init() {
   return { count: JSON.parse(window.localStorage.getItem("counter")) };
 }
 
-const Counter = () => {
-
-  const {counter}  = useParams();
-  // console.log("Counter ", counter);
-  
+function useActionIncrement() {
   const [stateCounter, dispatch] = useReducer(countReducer, { count: 0 }, init);
+
+  return {
+    stateCounter,
+    increment: (value) => dispatch({ type: "increment", payload: value }),
+    decrement: value => dispatch({ type: "decrement", payload: value })
+  }
+}
+
+const Counter = () => {
+  const { counter } = useParams();
+
+  // const [stateCounter, dispatch] = useReducer(countReducer, { count: 0 }, init);
+
+  const {stateCounter, increment, decrement} = useActionIncrement()   // Кастомный хук
 
   useEffect(() => {
     window.localStorage.setItem("counter", JSON.stringify(stateCounter.count));
@@ -49,19 +50,19 @@ const Counter = () => {
     <div>
       <Link to="/about">Go Back</Link>
       <Link to="/">Home</Link>
-      
+
       <h1>CLASS: {counter}</h1>
 
       <h2>{stateCounter.count ?? 0}</h2>
       <button
         type="button"
-        onClick={() => dispatch({ type: "increment", payload: 1 })}
+        onClick={() => increment(1)}
       >
         Увеличить
       </button>
       <button
         type="button"
-        onClick={() => dispatch({ type: "decrement", payload: 10 })}
+        onClick={() => decrement(5)}
       >
         Уменьшить
       </button>
