@@ -16,6 +16,15 @@
 // import UserMenu from "./components/UserMenu/UserMenu";
 // import PokemonInfo from "./components/ViewPokemon/PokemonInfo";
 
+export const App = () => {
+  return (
+    <div>
+      {/* <UserMenu /> */}
+      {/* <Counter /> */}
+    </div>
+  );
+};
+
 // ======================= Маршрутизация ========================
 
 // import { lazy } from "react";
@@ -33,7 +42,6 @@
 // import Statistics from "./pages/Statistics";
 // import PagePokemonInfo from "./pages/PagePokemonInfo";
 
-
 // const Home = createAsyncComponent('./pages/Home')
 // const About = createAsyncComponent('./pages/About');
 // const Products = createAsyncComponent('./pages/Products')
@@ -42,11 +50,9 @@
 // const PagePokemonInfo = createAsyncComponent('./pages/PagePokemonInfo')
 // const NotFound = createAsyncComponent('./pages/NotFound')
 
-
 // const App = () => {
 //   return (
-    
-   
+
 //       <Routes>
 //         <Route path="/" element={<SharedLayout />}>
 
@@ -66,61 +72,46 @@
 //           <Route path="*" element={<NotFound />} />
 
 //         </Route>
-        
+
 //       </Routes>
-    
+
 //   );
 // };
 // export default App;
 
-
 // ===============================Маршрутизация разделение кода
 
-import { lazy } from "react";
-import { Route, Routes } from "react-router-dom";
-import { SharedLayout } from "./components/SharedLayout/SharedLayout";
+// import { lazy } from "react";
+// import { Route, Routes } from "react-router-dom";
+// import { SharedLayout } from "./components/SharedLayout/SharedLayout";
 
-const createAsyncComponent = (path) => lazy(() => import(path));
+// const About = lazy(() => import("./pages/About.jsx"));
+// const Home = lazy(() => import("./pages/Home.jsx"));
+// const ProductDetails = lazy(() => import("./pages/ProdactDetails.jsx"));
+// const Products = lazy(() => import("./pages/Products"));
+// const NotFound = lazy(() => import("./pages/NotFound"));
 
-// const About = createAsyncComponent("./pages/About.jsx");
-// const Home = createAsyncComponent("./pages/Home.jsx");
-// const ProductDetails = createAsyncComponent("./pages/ProdactDetails.jsx");
-const Products = createAsyncComponent("./pages/Products");
-const NotFound = createAsyncComponent("./pages/NotFound")
+// const Mission = lazy(() => import("./components/Mission.jsx"));
+// const Team = lazy(() => import("./components/Team.jsx"));
+// const Reviews = lazy(() => import("./components/Reviews.jsx"));
 
-// const Mission = createAsyncComponent("./components/Mission.jsx");
-// const Team = createAsyncComponent("./components/Team.jsx");
-// const Reviews = createAsyncComponent("./components/Reviews.jsx");
-
-export const App = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        {/* <Route index element={<Home />} />
-        <Route path="about" element={<About />}>
-          <Route path="mission" element={<Mission />} />
-          <Route path="team" element={<Team />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route> */}
-        <Route path="products" element={<Products />} />
-        {/* <Route path="products/:id" element={<ProductDetails />} /> */}
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
-  );
-};
-
-
-
-
-
-
-
-
-
-
-
-
+// export const App = () => {
+//   return (
+//     <Routes>
+//       <Route path="/" element={<SharedLayout />}>
+//         <Route index element={<Home />} />
+//         <Route path="about" element={<About />}>
+//           <Route path="mission" element={<Mission />} />
+//           <Route path="team" element={<Team />} />
+//           <Route path="reviews" element={<Reviews />} />
+//         </Route>
+//         <Route path="products" element={<Products />} />
+//         <Route path="products/:id" element={<ProductDetails />} />
+//         <Route path="*" element={<NotFound />} />
+//       </Route>
+//     </Routes>
+//   );
+// };
 
 // const App = () => {
 //   const [pokemonName, setPokemonName] = useState("")
